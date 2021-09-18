@@ -1,111 +1,139 @@
-var nextQuestion = document.getElementById('nextQuestion');
-let nextQuest = document.getElementsByClassName('btn1');
-var score = document.getElementById('score');
-var finalScore = document.getElementById('finalScore');
-var countdown = document.getElementById('countdown')
-var count = 0;
-var scoreCount = 0;
-var duration = 0;
-var quizSet = document.querySelectorAll('.quiz_set');
-let quizBox = document.querySelectorAll('.quiz_box');
-var quizAnsRow = document.querySelectorAll('.quiz_set .quiz_ans_row input');
+var header1El = document.getElementById("header1");
+var contentEl = document.getElementById("content");
+var startBtnEL = document.getElementById("startBtn");
+var reStartBtnEL = document.getElementById("reStartBtn");
+var storeBtnEl = document.getElementById("storeBtn");
+var questionEL = document.getElementById("main");
+var timeEl = document.querySelector("#time");
+var feedbackEl = document.getElementById("feedback");
+var choicesEl = document.getElementById("choices");
+var finalIDEl = document.getElementById("finalID");
+var finalScore = document.getElementById("finalScore");
+var scoresFeedbackEl = document.getElementById("scoresFeedback");
+var resultsEl = document.getElementById("results");
+var highScoresEl = document.getElementById("highScores");
+var score = 0;
+var secondsLeft = 20*myQuestions.length;
+var currentQuestionIndex = 0;
+var currentQuestion = myQuestions[currentQuestionIndex];
 
-console.log(nextQuest, 'next quest collection');
-for(let i = 0; i < nextQuest.length; i++){
-    nextQuest[i].addEventListener('click', function(){
-        console.log("click")
-        step()
-        duration =10
-    })     
+function startQuiz () {
+    header1El.innerHTML = " ";
+    resultsEl.innerHTML = " ";
+    startBtnEL = document.getElementById("startBtn");
+    startBtnEL.classList.add("d-none"); //hides the start button - works well
+    getChoices();
+    setTime(); 
 }
-// nextQuestion.addEventListener('click', function(){
-//     console.log("click")
-//     step()
-//     duration =10
-// }) 
 
-quizAnsRow.forEach(function(quizAnsRowSingle) {
-    quizAnsRowSingle.addEventListener('click', function() {
-        setTimeout(function(){
-            // step();
-            duration =10
-            },500)
-
-        var valid =this.getAttribute('valid');
-        if(valid == "valid"){
-            scoreCount +=2;
-            score.innerHTML = scoreCount;
-            // finalScore.innerHTML = scoreCount;
-        }else{
-            scoreCount -=2;
-            score.innerHTML = scoreCount;
-            // finalScore.innerHTML = scoreCount;
+function getChoices() {
+    // e.preventDefault();
+    //console.log(currentQuestion.choices); works
+    var currentQuestion = myQuestions[currentQuestionIndex];
+    var titleEL = document.getElementById("main");
+    titleEL.textContent = currentQuestion.question;
+    choicesEl.innerHTML = "";
+    currentQuestion.choices.forEach( function (choice, i) {
+        var choiceButton = document.createElement("button");
+        choiceButton.setAttribute("class", "btn btn-success");
+        choiceButton.setAttribute("id", "qzBtn");
+        choiceButton.setAttribute("value", i);
+        choiceButton.textContent = i + 1 + ". "+choice;
+        choiceButton.onclick = questionClick;
+        choicesEl.appendChild(choiceButton);
         }
-    })
-})
-function step(){
-   console.log(nextQuestion, 'next quetions collections')
-    count += 1;
-    for(var i = 0; i < quizSet.length; i++){
-        quizSet[i].className= 'quiz_set';
-
-    }
-    quizSet[count].className= 'quiz_set active';
-    if (count === 1){
-        console.log('count === 1')
-        quizBox[1].style.display = 'block';
-        quizBox[0].style.display = 'none';
-        nextQuestion.style.display = 'none';
-        clearInterval(durationTime);
-        countdown.innerHTML = 0;
-    }
-
-    // quizSet[count].className= 'quiz_set active';
-    if (count === 2){
-        console.log('count === 2')
-        quizBox[2].style.display = 'block';
-        quizBox[1].style.display = 'none';
-        nextQuestion.style.display = 'none';
-        clearInterval(durationTime);
-        countdown.innerHTML = 0;
-    }
-
-    // quizSet[count].className= 'quiz_set active';
-    if (count === 3){
-        quizBox[3].style.display = 'block';
-        quizBox[2].style.display = 'none';
-        nextQuestion.style.display = 'none';
-        clearInterval(durationTime);
-        countdown.innerHTML = 0;
-    }
-
-    // quizSet[count].className= 'quiz_set active';
-    if (count === 4){
-        quizBox[4].style.display = 'block';
-        quizBox[3].style.display = 'none';
-        nextQuestion.style.display = 'none';
-        clearInterval(durationTime);
-        countdown.innerHTML = 0;
-    }
-
-    // quizSet[count].className= 'quiz_set active';
-    if (count === 5){
-        // quizBox[5].style.display = 'block';
-        quizBox[4].style.display = 'none';
-        nextQuestion.style.display = 'none';
-        clearInterval(durationTime);
-        countdown.innerHTML = 0;
-    }
-
-    var durationTime = setInterval(() => {
-        if(duration == 10){
-            duration == 0;
+    ) 
+}
+    // console.log(currentQuestionIndex);
+    function questionClick (e) {
+        
+        e.preventDefault();
+        // console.log(this.value);
+        if (this.value != myQuestions[currentQuestionIndex].correctAnswer) {
+            secondsLeft -= 10;
+            if (secondsLeft < 0) {
+                secondsLeft = 0;
+            }
+            
+            timeEl.textContent = time;
+            feedbackEl.innerHTML = "<br>"
+            feedbackEl.textContent = "Incorrect";
+        } else { //if correct
+            feedbackEl.textContent = "Correct";
+            score++;
+            // console.log(score); score works
         }
-        duration +=1;
-        countdown.innerHTML=duration;
-        if(countdown.innerHTML == "10"){
-            step()
+        currentQuestionIndex++;
+        if (currentQuestionIndex===myQuestions.length || secondsLeft <= 0) {
+            quizResults();
+            return;
         }
+        getChoices();
+        // console.log(currentQuestionIndex);
+    }
     
-    },1000)
+    function setTime() {
+        var timerInterval = setInterval(function() {
+            secondsLeft--;
+            timeEl.textContent = `Time: ${secondsLeft}`;
+            
+            if(secondsLeft === 0 || currentQuestionIndex===myQuestions.length || secondsLeft <= 0) {
+                clearInterval(timerInterval);
+            }
+            
+        }, 1000);
+       
+    }
+ 
+    function quizResults() { //function that shows the results and stores it in the local storage
+        questionEL.innerHTML = " ";
+        choicesEl.innerHTML = ' ';
+        header1El.innerHTML = "All Done!";
+        choicesEl.innerHTML = "Enter your initials: ";
+        finalScore.textContent = `Your score is: ${score}`;
+        timeEl.classList.add("d-none");
+        feedbackEl.classList.add("d-none");
+        finalIDEl.classList.remove("d-none");
+        finalScore.classList.remove("d-none");
+        storeBtnEl.classList.remove("d-none");
+    }
+    
+    function storeResults() {
+        console.log('started')
+        localStorage.setItem(finalIDEl.value, score);
+        reStartBtnEL.classList.remove("d-none");
+        var scoresMessage = document.createElement("div");
+        scoresMessage.innerText = `Results stored! Please view High Scores or refresh the page to start over.`;
+        scoresFeedbackEl.prepend(scoresMessage);
+    }
+
+    function renderResults() {
+        
+        if (localStorage.length == 0) {
+            resultsEl.innerHTML = " ";
+            var resultsDiv = document.createElement("p");
+            resultsDiv.innerText =`No results stored. Please take a test!`;
+            resultsEl.appendChild(resultsDiv);
+        } else {
+        //console.log("clicked")
+        resultsEl.innerHTML = " ";
+        for (i = 0; i < localStorage.length; i++) {
+            var testResult = localStorage.getItem(localStorage.key(i));
+            var testKey = localStorage.key(i);
+            var resultsDiv = document.createElement("p");
+            //console.log(localStorage.key(i));
+            //console.log(testResult);
+            
+            resultsDiv.innerText =`${testKey} score is ${testResult}`;
+            resultsEl.appendChild(resultsDiv);
+        }
+    }}
+    
+function refresh () {
+    location.reload();
 }
+
+startBtnEL.addEventListener("click", startQuiz);
+storeBtnEl.addEventListener("click", storeResults);
+highScoresEl.addEventListener("click", renderResults);
+reStartBtnEL.addEventListener("click", refresh);

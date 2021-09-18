@@ -2,184 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div id='quiz1' class="quiz_box">
-        <div class="quiz_header">
-            <span>Hihgscore: <span id="score">0</span></span>
-            <span>Timer: <span id="countdown">0</span></span>
+    <div class="row">
+        <a id="highScores">View High Scores</a> 
+        <div class="col-md-1" id="time"></div>
+    </div>  
+    <div class="col-md container" id="content">
+    <div class="jumbotron col-lg-6 col-md-10 col-sm-12">
+        
+    <div class="col-lg col-md-10 col-sm-12"> 
+        <div class="row"><h1 class="col-md-10" id="header1">Coding Quiz Challenge</h1>
         </div>
-        <div class="quiz_body">
-            <div class="quiz_set active">
-            </div>
-          <div class="quiz_set">
-              <h4>Commonly used data types DO NOT include:</h4>
-              <div class="quiz_ans_row">
-                  <input type="radio" name="a1">
-                  <span>1. strings</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a1">
-                 <span>2. booleans</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a1" valid="valid">
-                 <span> 3. alerts</span>
-              </div>
-             <div class="quiz_ans_row">
-                 <input type="radio" name="a1">
-                 <span>4. numbers</span>
-              </div>
-          </div>
+        <h7 id="main" class="row">
+        <ul>
+            <li>Try to answer the following code-related questions within the time limit.</li>
+            <li>Keep in mind that incorrect answers will penalize your scoretime by ten seconds!</li>
+            
+        </ul>
+        </h7>
+        <div class="row">
+            <button type="button" id="startBtn" class="btn btn-success">Start</button>
+        </div>
+        <div id="choices">
 
         </div>
-        <div class="quiz_footer">
-            <span class="btn1" id='nextQuestion'>Next Question</span>
+        <div class="row">
+            <!-- initials element -->
+            <input type="text" name="Initials" id="finalID" placeholder="Initials" class="col-md-2 d-none">
+            <!-- scores element -->
+        <div id="finalScore" class="input-group input-group-sm mb-3 col-md-2 d-none">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Your score:</span>
+                </div>
+            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         </div>
+        <button type="button" id="storeBtn" class="btn btn-success d-none">Submit</button>
+        </div>
+        <h2 id="countdown"></h2>
+        <div id="quizContainer"></div>
+    <div id="scoresFeedback"><button class="d-none btn btn-success" id="reStartBtn">Go Back!</button></div>
+    <div id="results"></div>
     </div>
-
-    <div id='quiz2' class="quiz_box">
-        <div class="quiz_header">
-            <span>Hihgscore: <span id="score">0</span></span>
-            <span>Timer: <span id="countdown">0</span></span>
-        </div>
-        <div class="quiz_body">
-            <div class="quiz_set active">
-            </div>
-          <div class="quiz_set">
-              <h4>The condition in an if/else statement is enclosed within:</h4>
-              <div class="quiz_ans_row">
-                  <input type="radio" name="a2">
-                  <span>1. quotes</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a2">
-                 <span>2. curly brackets</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a2" valid="valid">
-                 <span> 3. parentheses</span>
-              </div>
-             <div class="quiz_ans_row">
-                 <input type="radio" name="a2">
-                 <span>4. square brackets</span>
-              </div>
-          </div>
-
-        </div>
-        <div class="quiz_footer">
-            <span class="btn1" id='nextQuestion'>Next Question</span>
-        </div>
+    <div class="col-2">
+        
+        <div class="col-md-1" id="feedback"></div>
+    </div>  
     </div>
-
-    <div id='quiz3' class="quiz_box">
-        <div class="quiz_header">
-            <span>Hihgscore: <span id="score">0</span></span>
-            <span>Timer: <span id="countdown">0</span></span>
-        </div>
-        <div class="quiz_body">
-            <div class="quiz_set active">
-            </div>
-          <div class="quiz_set">
-              <h4>Arrays in JavaScript can be used to store:</h4>
-              <div class="quiz_ans_row">
-                  <input type="radio" name="a3">
-                  <span>1. numbers and strings</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a3">
-                 <span>2. other arrays</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a3" valid="valid">
-                 <span> 3. booleans</span>
-              </div>
-             <div class="quiz_ans_row">
-                 <input type="radio" name="a3">
-                 <span>4. all of the above</span>
-              </div>
-          </div>
-
-        </div>
-        <div class="quiz_footer">
-            <span class="btn1" id='nextQuestion'>Next Question</span>
-        </div>
-    </div>
-
-    <div id='quiz4' class="quiz_box">
-        <div class="quiz_header">
-            <span>Hihgscore: <span id="score">0</span></span>
-            <span>Timer: <span id="countdown">0</span></span>
-        </div>
-        <div class="quiz_body">
-            <div class="quiz_set active">
-            </div>
-          <div class="quiz_set">
-              <h4>Strings values must be enclosed within...when being assigned to variables</h4>
-              <div class="quiz_ans_row">
-                  <input type="radio" name="a4">
-                  <span>1. commas</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a4">
-                 <span>2. curly brackets</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a4" valid="valid">
-                 <span> 3. quotes</span>
-              </div>
-             <div class="quiz_ans_row">
-                 <input type="radio" name="a4">
-                 <span>4. parenthesis</span>
-              </div>
-          </div>
-
-        </div>
-        <div class="quiz_footer">
-            <span class="btn1" id='nextQuestion'>Next Question</span>
-        </div>
-    </div>
-
-    <div id='quiz5' class="quiz_box">
-        <div class="quiz_header">
-            <span>Hihgscore: <span id="score">0</span></span>
-            <span>Timer: <span id="countdown">0</span></span>
-        </div>
-        <div class="quiz_body">
-            <div class="quiz_set active">
-            </div>
-          <div class="quiz_set">
-              <h4>A very useful tool used during development and debugging for printing content to the debugger is:</h4>
-              <div class="quiz_ans_row">
-                  <input type="radio" name="a5">
-                  <span>1. JavaScript</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a5">
-                 <span>2. terminal/bash</span>
-              </div>
-              <div class="quiz_ans_row">
-                 <input type="radio" name="a5">
-                 <span> 3. for loops</span>
-              </div>
-             <div class="quiz_ans_row">
-                 <input type="radio" name="a5" valid="valid">
-                 <span>4. console.log</span>
-              </div>
-              <h5>Your final score is:</h5>
-          </div>
-
-        </div>
-        <div class="quiz_footer">
-            <span class="btn1" id='nextQuestion'>Next Question</span>
-        </div>
-    </div>
-    <!-- <script type="javascript" src="script.js"></script> -->
-    <script src="./script.js"></script>
+</div>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
