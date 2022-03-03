@@ -8,10 +8,11 @@ This app is a timed coding quiz app with multiple-choice questions. The link to 
 ## Table of Contents:
 1. [Installation](#installation)
 2. [Usage](#usage)
-3. [License](#license)
-4. [Contributing](#contributing)
-5. [Tests](#tests)
-6. [Questions](#questions)
+3. [Technologies used](#technologies used)
+4. [License](#license)
+5. [Contributing](#contributing)
+6. [Tests](#tests)
+7. [Questions](#questions)
 
 ## Installation
 
@@ -23,6 +24,8 @@ After all the questions are answered or the time reaches 0, the game is over and
 <img width="953" alt="code quiz1" src="https://user-images.githubusercontent.com/87605893/156624943-063b6974-3a83-4c1c-8e3c-afe3e3c03bd1.png">
 <img width="917" alt="code quiz2" src="https://user-images.githubusercontent.com/87605893/156624949-e6bab78e-0545-41f3-9d87-69e2da6122bf.png">
 <img width="955" alt="code quiz3" src="https://user-images.githubusercontent.com/87605893/156624957-bea2c9b4-69a2-4890-bcda-5cae4ff952ca.png">
+
+## Technologies Used
 
 ## License
 MIT License
