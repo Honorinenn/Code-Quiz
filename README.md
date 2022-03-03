@@ -1,6 +1,7 @@
 # Code Quiz 
 
-This app is a timed coding quiz app with multiple-choice questions
+This app is a timed coding quiz app with multiple-choice questions. The link to the deploy app is seen below:
+ https://honorinenn.github.io/Code-Quiz/
 
 ![License badge](https://img.shields.io/badge/license-MIT-builtinModules.svg)
      
