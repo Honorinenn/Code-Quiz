@@ -19,6 +19,10 @@ This app is a timed coding quiz app with multiple-choice questions. The link to 
 ## Usage
 When the user clicks onth start button, the timer starts and he is presented with a question. After answering a question, he is presented with another question. For any question answered incorrectly, time is subtracted from the clock.
 
+<img width="953" alt="code quiz1" src="https://user-images.githubusercontent.com/87605893/156624943-063b6974-3a83-4c1c-8e3c-afe3e3c03bd1.png">
+<img width="917" alt="code quiz2" src="https://user-images.githubusercontent.com/87605893/156624949-e6bab78e-0545-41f3-9d87-69e2da6122bf.png">
+<img width="955" alt="code quiz3" src="https://user-images.githubusercontent.com/87605893/156624957-bea2c9b4-69a2-4890-bcda-5cae4ff952ca.png">
+
 ## License
 MIT License
 
