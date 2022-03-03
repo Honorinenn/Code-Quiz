@@ -26,6 +26,9 @@ After all the questions are answered or the time reaches 0, the game is over and
 <img width="955" alt="code quiz3" src="https://user-images.githubusercontent.com/87605893/156624957-bea2c9b4-69a2-4890-bcda-5cae4ff952ca.png">
 
 ## Technologies Used
+1. HTML
+2. CSS
+3. JavaScript
 
 ## License
 MIT License
